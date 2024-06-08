@@ -79,5 +79,8 @@ class EditProfileViewModel : ObservableObject {
         if(!data.isEmpty) {
             try await Firestore.firestore().collection("users").document(user.id).updateData(data)
         }
+        
+        
+        let _ = try await AuthService.shared.loadUserData()
     }
 }

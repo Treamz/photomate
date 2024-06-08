@@ -52,6 +52,8 @@
 		22CA4E412C14A425004F47E9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA4E402C14A425004F47E9 /* Kingfisher */; };
 		22CA4E432C14A465004F47E9 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA4E422C14A465004F47E9 /* CircularProfileImageView.swift */; };
 		22CA4E472C14BBC5004F47E9 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA4E462C14BBC4004F47E9 /* FeedViewModel.swift */; };
+		22CA4E492C14C001004F47E9 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA4E482C14C001004F47E9 /* PostService.swift */; };
+		22CA4E4D2C14C1F5004F47E9 /* PostGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA4E4C2C14C1F5004F47E9 /* PostGridViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		22CA4E3B2C149C54004F47E9 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		22CA4E422C14A465004F47E9 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		22CA4E462C14BBC4004F47E9 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		22CA4E482C14C001004F47E9 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		22CA4E4C2C14C1F5004F47E9 /* PostGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 			children = (
 				22CA4E2F2C147572004F47E9 /* UserService.swift */,
 				22CA4E3B2C149C54004F47E9 /* ImageUploader.swift */,
+				22CA4E482C14C001004F47E9 /* PostService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -268,10 +273,8 @@
 		22CA4DEB2C1324E8004F47E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				22CA4DEC2C1324F6004F47E9 /* UserStatView.swift */,
-				22CA4DF82C134FD5004F47E9 /* TextFieldModifier.swift */,
-				22CA4E062C135EB1004F47E9 /* PostGridView.swift */,
-				22CA4E422C14A465004F47E9 /* CircularProfileImageView.swift */,
+				22CA4E4B2C14C1DA004F47E9 /* ViewModel */,
+				22CA4E4A2C14C1D7004F47E9 /* View */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -380,6 +383,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		22CA4E4A2C14C1D7004F47E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22CA4DEC2C1324F6004F47E9 /* UserStatView.swift */,
+				22CA4DF82C134FD5004F47E9 /* TextFieldModifier.swift */,
+				22CA4E062C135EB1004F47E9 /* PostGridView.swift */,
+				22CA4E422C14A465004F47E9 /* CircularProfileImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22CA4E4B2C14C1DA004F47E9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				22CA4E4C2C14C1F5004F47E9 /* PostGridViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -483,7 +505,9 @@
 				22CA4DFB2C1350B2004F47E9 /* CreateUsernameView.swift in Sources */,
 				22CA4E472C14BBC5004F47E9 /* FeedViewModel.swift in Sources */,
 				22CA4E252C1378BF004F47E9 /* ContentViewModel.swift in Sources */,
+				22CA4E492C14C001004F47E9 /* PostService.swift in Sources */,
 				22CA4E362C1493BE004F47E9 /* EditProfileView.swift in Sources */,
+				22CA4E4D2C14C1F5004F47E9 /* PostGridViewModel.swift in Sources */,
 				22CA4E2A2C146C43004F47E9 /* LoginViewModel.swift in Sources */,
 				22CA4E3C2C149C54004F47E9 /* ImageUploader.swift in Sources */,
 				22CA4E282C137A77004F47E9 /* RegistrationViewModel.swift in Sources */,

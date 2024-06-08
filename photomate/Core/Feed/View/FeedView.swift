@@ -35,7 +35,13 @@ struct FeedView: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                try await viewModel.fetchPosts()
+            }
+        }
     }
+
 }
 
 #Preview {
