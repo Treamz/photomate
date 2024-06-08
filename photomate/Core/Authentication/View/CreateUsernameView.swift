@@ -11,7 +11,7 @@ struct CreateUsernameView: View {
     @Environment(\.dismiss) var dismiss
 
     
-    @State private var username = ""
+    @EnvironmentObject var viewModel: RegistrationViewModel
     var body: some View {
         VStack(spacing: 12) {
             Text("Create username")
@@ -25,7 +25,7 @@ struct CreateUsernameView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal,24)
             
-            TextField("Email",text: $username)
+            TextField("Email",text: $viewModel.username)
                 .autocapitalization(.none)
                 .modifier(FGTextFieldModifier())
             

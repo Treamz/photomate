@@ -11,11 +11,11 @@ struct CompleteSignUpView: View {
     @Environment(\.dismiss) var dismiss
 
     
-    @State private var password = ""
+    @EnvironmentObject var viewModel: RegistrationViewModel
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
-            Text("Welcome to instagram, Ivan Chernoknizhnikov")
+            Text("Welcome to instagram, \(viewModel.username)")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
@@ -30,7 +30,9 @@ struct CompleteSignUpView: View {
         
             
             Button {
-                
+                Task {
+                    try await viewModel.createUser()
+                }
             } label: {
                 Text("Complete Sign Up")
                     .font(.subheadline)
