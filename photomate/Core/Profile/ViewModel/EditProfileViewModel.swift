@@ -8,12 +8,14 @@
 import Foundation
 import PhotosUI
 import SwiftUI
+import FirebaseFirestore
+
 @MainActor
 class EditProfileViewModel : ObservableObject {
     
     @Published var user : User
         
-    @Published var name = ""
+    @Published var fullname = ""
 
     @Published var bio = ""
     
@@ -28,8 +30,17 @@ class EditProfileViewModel : ObservableObject {
     
     @Published var profileImage: Image?
     
+    
+    private var uiImage: UIImage?
     init(user: User) {
         self.user = user
+        
+        if let fullName = user.fullName {
+            self.fullname = fullName
+        }
+        if let bio = user.bio {
+            self.bio = bio
+        }
     }
     
     func loadImage(fromItem item: PhotosPickerItem?) async {
@@ -38,6 +49,7 @@ class EditProfileViewModel : ObservableObject {
         guard let data = try? await item.loadTransferable(type: Data.self) else { return }
         
         guard let uiImage = UIImage(data: data) else { return }
+        self.uiImage = uiImage
         self.profileImage = Image(uiImage: uiImage)
         
     }
@@ -49,14 +61,23 @@ class EditProfileViewModel : ObservableObject {
         
         var data = [String: Any]()
         
-        if !name.isEmpty && user.fullName != name {
-            data["fullname"] = name
+        if let profileImage = profileImage {
+            let imageUrl = try? await ImageUploader.uploadImage(image: uiImage)
+            data["profileImageUrl"] = imageUrl
+        }
+        
+        if !fullname.isEmpty && user.fullName != fullname {
+            data["fullName"] = fullname
         }
         
         // update profile bio if changed
         
         if !bio.isEmpty && user.bio != bio {
             data["bio"] = bio
+        }
+        
+        if(!data.isEmpty) {
+            try await Firestore.firestore().collection("users").document(user.id).updateData(data)
         }
     }
 }

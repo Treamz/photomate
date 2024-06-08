@@ -13,22 +13,24 @@ struct UploadPostView: View {
     @State private var photoItem : PhotosPickerItem?
     @Binding var tabIndex: Int
     @StateObject var viewModel = UploadPostViewModel()
+    
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack {
             // Header
             HStack {
                 Button("Cancel") {
-                    caption = ""
-                    viewModel.selectedImage = nil
-                    viewModel.postImage = nil
-                    tabIndex = 0
+                    clearPostDataAndReturnToFeed()
                 }
                 Spacer()
                 Text("New Post")
                     .fontWeight(.semibold)
                 Spacer()
                 Button() {
-                    
+                    Task {
+                        try await viewModel.uploadPost(captiong:caption)
+                        clearPostDataAndReturnToFeed()
+                    }
                 } label: {
                     Text("Upload")
                         .fontWeight(.semibold)
@@ -55,6 +57,14 @@ struct UploadPostView: View {
             imagePickerPresented.toggle()
         }
         .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
+    }
+    
+    func clearPostDataAndReturnToFeed() {
+        caption = ""
+        viewModel.selectedImage = nil
+        viewModel.postImage = nil
+        tabIndex = 0
+        dismiss()
     }
 }
 
